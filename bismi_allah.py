@@ -15,11 +15,24 @@ def marra_or_marrat(number):
 def dikrDict(text, count):
     return {"text": text, "count": count}
 
-best_dikr = [
+favorite_dikr = [
     dikrDict("سبحان الله وبحمده", 100),
     dikrDict("أستغفر الله وأتوب إليه", 5),
     dikrDict("لا إلاه إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير", 100),
     dikrDict("صلى الله على مخمد", 10),
+]
+
+morning_dikr = [
+    dikrDict("آية الكرسي", 1),
+    dikrDict("سبحان الله وبحمده", 100),
+    dikrDict("أستغفر الله وأتوب إليه", 5),
+    dikrDict("لا إلاه إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير", 100),
+    dikrDict("صلى الله على مخمد", 10),
+]
+
+adkar_lists_info = [
+    {'name': 'المفضلة', 'icon': 'favorite', 'list': favorite_dikr},
+    {'name': 'الصباح', 'icon': 'sunny', 'list': morning_dikr},
 ]
 
 class Dikr(ft.Container):
@@ -89,15 +102,52 @@ class DikrList(ft.Column):
     def on_click_previous(e):
         e.control.parent.parent.previous()
 
+class DikrListButton(ft.Container):
+    def __init__(self, list_info):
+        super().__init__()
+        self.bg_color = '#eeeeee'
+        # self.image = 
+        self.content = ft.Column(
+            [
+                ft.Icon(list_info['icon']),
+                ft.Text(list_info['name']),
+            ]
+        )
+        self.dikr_list = list_info['list']
+        def on_click(e):
+            e.control.parent.parent.setDikrList(e.control.dikr_list)
+        self.on_click = on_click
+
+
+class AdkarListsButtons(ft.Column):
+    def __init__(self, lists):
+        super().__init__()
+
+        self.controls = [DikrListButton(dikr_list) for dikr_list in lists]
+
 class DikrApp(ft.Column):
 
     def __init__(self):
         super().__init__()
 
+        self.adkar_lists_buttons = AdkarListsButtons(adkar_lists_info)
+
+        def on_click(e):
+            e.control.parent.goHome()
+
         self.counter = 0
         self.controls = [
-            DikrList(best_dikr),
+            self.adkar_lists_buttons,
+            ft.ElevatedButton(text="Home", on_click=on_click)
         ]
+
+    def setDikrList(self, dikr_list):
+        self.controls[0] = DikrList(dikr_list)
+        self.update()
+
+    def goHome(self):
+        self.controls[0] = self.adkar_lists_buttons
+        self.update()
 
 def main(page):
     page.title = 'بسم الله الرحمن الرحيم'
