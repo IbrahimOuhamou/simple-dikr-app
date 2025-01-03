@@ -64,6 +64,8 @@ class Dikr(ft.Container):
         self.progress_label.value = (str(self.dikr_count) + ' - ' + str(self.dikr_dict['count']) + marra_or_marrat(self.dikr_dict['count']))
         if dikr_progress >= 1:
             self.parent.next()
+            if self.parent.dikr_index + 1 >= len(self.parent.dikr_list):
+                self.update()
             return
         self.update()
 
