@@ -136,13 +136,9 @@ class DikrApp(ft.Column):
 
         self.adkar_lists_buttons = AdkarListsButtons(adkar_lists_info)
 
-        def on_click(e):
-            e.control.parent.goHome()
-
         self.counter = 0
         self.controls = [
             self.adkar_lists_buttons,
-            ft.ElevatedButton(text="Home", on_click=on_click)
         ]
 
     def setDikrList(self, dikr_list):
@@ -157,6 +153,15 @@ def main(page):
     page.title = 'بسم الله الرحمن الرحيم'
 
     dikr_app = DikrApp()
+
+    page.bottom_appbar = ft.BottomAppBar(
+        bgcolor='#EF3862',
+        content = ft.Row(
+            [
+                ft.IconButton(icon=ft.icons.HOME, icon_color='#FFFFFF', on_click=lambda e: dikr_app.goHome()),
+            ]
+        )
+    )
 
     page.add(dikr_app)
 
