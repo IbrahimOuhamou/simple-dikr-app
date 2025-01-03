@@ -59,8 +59,12 @@ class Dikr(ft.Container):
             self.parent.next()
             return
         self.dikr_count += 1
+        dikr_progress = (self.dikr_count / self.dikr_dict['count'])
         self.progress_bar.value = dikr_progress
         self.progress_label.value = (str(self.dikr_count) + ' - ' + str(self.dikr_dict['count']) + marra_or_marrat(self.dikr_dict['count']))
+        if dikr_progress >= 1:
+            self.parent.next()
+            return
         self.update()
 
 class DikrList(ft.Column):
