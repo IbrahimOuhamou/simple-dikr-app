@@ -133,12 +133,29 @@ class AdkarListsButtons(ft.Column):
 
         self.controls = [DikrListButton(dikr_list) for dikr_list in lists]
 
+class Misbaha(ft.Container):
+    def __init__(self):
+        super().__init__()
+        self.counter = 0
+        self.content = ft.Text(
+            '0',
+            expand=True,
+        )
+        self.expand=True
+        self.alignment=ft.alignment.center
+        def on_click(e):
+            e.control.counter += 1
+            e.control.content.value = str(e.control.counter)
+            e.control.update()
+        self.on_click = on_click
+
 class DikrApp(ft.Column):
 
     def __init__(self):
         super().__init__()
 
         self.adkar_lists_buttons = AdkarListsButtons(adkar_lists_info)
+        self.misbaha = Misbaha()
 
         self.counter = 0
         self.controls = [
@@ -153,6 +170,10 @@ class DikrApp(ft.Column):
         self.controls[0] = self.adkar_lists_buttons
         self.update()
 
+    def goToMisbaha(self):
+        self.controls[0] = self.misbaha
+        self.update()
+
 def main(page):
     page.title = 'بسم الله الرحمن الرحيم'
 
@@ -163,6 +184,7 @@ def main(page):
         content = ft.Row(
             [
                 ft.IconButton(icon=ft.icons.HOME, icon_color='#FFFFFF', on_click=lambda e: dikr_app.goHome()),
+                ft.IconButton(icon=ft.icons.AUTO_AWESOME, icon_color='#FFFFFF', on_click=lambda e: dikr_app.goToMisbaha()),
             ]
         )
     )
