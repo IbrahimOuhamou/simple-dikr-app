@@ -1,0 +1,64 @@
+[
+    {
+        "name": "morning",
+        "description": "adkar for the morning",
+        "adkar": [
+            {
+                "value": "بسم الله الرحمن الرحيم",
+                "count": 1
+            },
+            {
+                "value": "la ilaha illa Allah Mohammed Rassoul Allah",
+                "count": 1
+            },
+            {
+                "value": "ayat ak kursi",
+                "count": 1
+            },
+            {
+                "value": "سبحان الله وبحمده",
+                "count": 100
+            },
+            {
+                "value": "لا إله إلا الله وحده لا شريك له, له الملك وله الحمد وهو على كل شيء قدير",
+                "count": 100
+            }
+        ]
+    },
+    {
+        "name": "evening",
+        "description": "adkar for the evening",
+        "adkar": [
+            {
+                "value": "بسم الله الرحمن الرحيم",
+                "count": 1
+            },
+            {
+                "value": "la ilaha illa Allah Mohammed Rassoul Allah",
+                "count": 1
+            },
+            {
+                "value": "ayat ak kursi",
+                "count": 1
+            },
+            {
+                "value": "سبحان الله وبحمده",
+                "count": 100
+            },
+            {
+                "value": "لا إله إلا الله وحده لا شريك له, له الملك وله الحمد وهو على كل شيء قدير",
+                "count": 100
+            }
+        ]
+    },
+    {
+        "name": "before sleep",
+        "description": "adkar before going to sleep",
+        "adkar": [
+            {
+                "value": "باسمك اللهم أموت وأحيا",
+                "count": 1
+            }
+        ]
+    }
+]
