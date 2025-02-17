@@ -1,15 +1,18 @@
 <script>
+	import Dikr from '$lib/Dikr.svelte'
+
 	let { data } = $props();
-	const adkar = data.adkar;
-	console.log(JSON.stringify(data.adkar));
+	// const adkar = data.adkar;
+
+	let adkar = $state(data.adkar);
+	function removeFn(index) {
+		adkar = [...adkar.slice(0, index), ...adkar.slice(index + 1)];
+	}
 </script>
 
 <div>
-	{#each adkar as dikr}
-		<div>
-			<p>{dikr.value}</p>
-			<p>{dikr.count}</p>
-		</div>
+	{#each adkar as dikr, i}
+		<Dikr {...dikr} i={i} {removeFn}/>
 	{/each}
 </div>
 
