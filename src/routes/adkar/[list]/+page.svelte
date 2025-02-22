@@ -10,7 +10,7 @@
 	}
 </script>
 
-<div>
+<div class="m-auto font-semibold">
 	{#each adkar as dikr, i (adkar[i])}
 		<Dikr {...dikr} i={i} {removeFn}/>
 	{/each}
