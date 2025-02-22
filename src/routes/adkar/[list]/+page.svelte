@@ -11,8 +11,7 @@
 </script>
 
 <div>
-	{#each adkar as dikr, i}
+	{#each adkar as dikr, i (adkar[i])}
 		<Dikr {...dikr} i={i} {removeFn}/>
 	{/each}
 </div>
-
