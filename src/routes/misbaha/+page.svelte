@@ -12,10 +12,10 @@
 	}
 </script>
 
-<div class="text-center flex flex-col content-between items-center h-full">
+<div class="text-center flex flex-col content-between items-center h-max">
 	<h3>{dikr}</h3>
 	<button
-		class="mt-auto bg-green-100 rounded-full size-20 p-3 text-2xl font-semibold block"
+		class="bg-green-300 rounded-full size-20 p-3 text-2xl font-semibold block mt-32"
 		onclick={count += 1}
 	>
 		{count}
